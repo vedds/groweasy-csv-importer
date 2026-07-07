@@ -1,7 +1,7 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { buildExtractionPrompt } = require('../prompts/crmExtraction');
 
-const BATCH_SIZE = 15;      // Records per AI call
+const BATCH_SIZE = 5;       // Records per AI call (small = reliable JSON output)
 const MAX_RETRIES = 3;      // How many times to retry a failed batch
 const BASE_DELAY_MS = 2000; // Base delay between retries (doubles each time)
 
@@ -12,7 +12,7 @@ function sleep(ms) {
 
 /**
  * Cleans the AI response text and parses it as JSON.
- * Handles cases where the model wraps output in markdown code fences.
+ * Handles markdown code fences and recovers from truncated responses.
  */
 function parseAIResponse(text) {
   let cleaned = text.trim();
@@ -21,13 +21,28 @@ function parseAIResponse(text) {
   cleaned = cleaned.replace(/^```json\s*/i, '').replace(/\s*```$/i, '');
   cleaned = cleaned.replace(/^```\s*/, '').replace(/\s*```$/, '');
 
-  // Sometimes models add prose before/after the JSON — extract just the array
+  // Extract just the JSON array from the response
   const arrayMatch = cleaned.match(/\[[\s\S]*\]/);
   if (arrayMatch) {
     cleaned = arrayMatch[0];
   }
 
-  return JSON.parse(cleaned);
+  // Try direct parse first
+  try {
+    return JSON.parse(cleaned);
+  } catch (firstErr) {
+    // Recovery: response may be truncated — find last complete object
+    try {
+      const lastBrace = cleaned.lastIndexOf('}');
+      if (lastBrace > 0) {
+        const recovered = cleaned.substring(0, lastBrace + 1) + ']';
+        const result = JSON.parse(recovered);
+        console.warn('  ⚠️  Recovered truncated AI response — some records may be missing');
+        return result;
+      }
+    } catch (_) { /* fall through */ }
+    throw firstErr;
+  }
 }
 
 /**

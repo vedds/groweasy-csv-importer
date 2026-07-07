@@ -6,9 +6,21 @@ const importRoutes = require('./routes/import');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Allow requests from frontend
+// Allow requests from frontend (localhost + any Vercel deployment)
 app.use(cors({
-  origin: ['http://localhost:3000', process.env.FRONTEND_URL].filter(Boolean),
+  origin: (origin, callback) => {
+    const allowed = [
+      'http://localhost:3000',
+      process.env.FRONTEND_URL,
+    ].filter(Boolean);
+
+    // Allow any vercel.app subdomain
+    if (!origin || allowed.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
 }));
 

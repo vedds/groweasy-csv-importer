@@ -87,7 +87,7 @@ export default function Home() {
           <div className="logo-icon">VS</div>
           <span className="logo-text">VedSync AI</span>
         </div>
-        <div className="header-badge">by Mohit Patil</div>
+        <div className="header-badge">by Vedant</div>
       </header>
 
       {/* ── Hero ── */}
@@ -95,7 +95,7 @@ export default function Home() {
         <h1>Import Any CSV. Extract Every Lead.</h1>
         <p>
           Powered by Google Gemini AI — maps any column format to your CRM fields automatically.
-          Built by Mohit Patil for GrowEasy.
+          Built by Vedant for GrowEasy.
         </p>
       </section>
 
@@ -160,7 +160,7 @@ export default function Home() {
       }}>
         Designed &amp; Built by{' '}
         <a href="https://github.com/vedds" target="_blank" rel="noopener noreferrer">
-          Mohit Patil
+          Vedant
         </a>
         {' '}· Powered by Gemini AI
       </footer>

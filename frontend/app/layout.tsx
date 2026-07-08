@@ -11,8 +11,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'VedSync AI — Intelligent CSV Importer',
   description:
-    'AI-powered CSV to CRM importer by Mohit Patil. Upload any CSV and intelligently extract lead information.',
-  keywords: 'CSV importer, CRM, leads, AI, VedSync, data import, Gemini AI, Mohit Patil',
+    'AI-powered CSV to CRM importer by Vedant. Upload any CSV and intelligently extract lead information.',
+  keywords: 'CSV importer, CRM, leads, AI, VedSync, data import, Gemini AI, Vedant',
 };
 
 export default function RootLayout({

@@ -84,18 +84,18 @@ export default function Home() {
       {/* ── Header ── */}
       <header className="site-header">
         <div className="logo">
-          <div className="logo-icon">🌱</div>
-          <span className="logo-text">GrowEasy</span>
+          <div className="logo-icon">VS</div>
+          <span className="logo-text">VedSync AI</span>
         </div>
-        <div className="header-badge">AI CSV Importer</div>
+        <div className="header-badge">by Mohit Patil</div>
       </header>
 
       {/* ── Hero ── */}
       <section className="hero">
-        <h1>Import Any CSV into GrowEasy CRM</h1>
+        <h1>Import Any CSV. Extract Every Lead.</h1>
         <p>
-          Upload leads from Facebook, Google Ads, Excel, or any source.
-          Our AI intelligently maps and extracts every field automatically.
+          Powered by Google Gemini AI — maps any column format to your CRM fields automatically.
+          Built by Mohit Patil for GrowEasy.
         </p>
       </section>
 
@@ -155,10 +155,12 @@ export default function Home() {
         borderTop: '1px solid var(--border-subtle)',
         color: 'var(--text-muted)',
         fontSize: 13,
+        position: 'relative',
+        zIndex: 2,
       }}>
-        Built for{' '}
-        <a href="https://groweasy.ai" target="_blank" rel="noopener noreferrer">
-          GrowEasy
+        Designed &amp; Built by{' '}
+        <a href="https://github.com/vedds" target="_blank" rel="noopener noreferrer">
+          Mohit Patil
         </a>
         {' '}· Powered by Gemini AI
       </footer>

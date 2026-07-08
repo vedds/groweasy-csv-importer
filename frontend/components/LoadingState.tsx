@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 
 const STEPS = [
-  { label: 'Parsing CSV rows',                   delay: 0 },
-  { label: 'Sending records to Gemini AI',        delay: 1200 },
-  { label: 'Intelligently mapping CRM fields',    delay: 2800 },
-  { label: 'Validating extracted records',        delay: 5000 },
-  { label: 'Finalising import results',           delay: 8000 },
+  { label: 'Analysing your CSV structure...',   delay: 0 },
+  { label: 'Mapping columns with Gemini AI...',  delay: 1200 },
+  { label: 'Extracting lead data...',            delay: 2800 },
+  { label: 'Validating CRM fields...',           delay: 5000 },
+  { label: 'Finalising your import...',          delay: 8000 },
 ];
 
 export default function LoadingState() {
@@ -24,11 +24,11 @@ export default function LoadingState() {
     <div className="loading-wrapper animate-in">
       <div className="loading-spinner" aria-label="Processing" />
 
-      <h2 className="loading-title">AI is extracting your leads…</h2>
+      <h2 className="loading-title">VedSync AI is working its magic…</h2>
       <p className="loading-sub">
-        Gemini is analysing your CSV and mapping fields to GrowEasy CRM format.
+        Gemini is mapping your CSV columns to CRM fields intelligently.
         <br />
-        This may take a moment for large files.
+        Sit tight — this takes just a moment.
       </p>
 
       <div className="loading-steps" role="status" aria-live="polite">

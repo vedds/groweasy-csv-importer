@@ -9,10 +9,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'GrowEasy CSV Importer — AI-Powered CRM Lead Extraction',
+  title: 'VedSync AI — Intelligent CSV Importer',
   description:
-    'Upload any CSV file from Facebook Ads, Google Ads, Excel, or any CRM export. Our AI intelligently maps and extracts your lead data into GrowEasy CRM format.',
-  keywords: 'CSV importer, CRM, leads, AI, GrowEasy, data import',
+    'AI-powered CSV to CRM importer by Mohit Patil. Upload any CSV and intelligently extract lead information.',
+  keywords: 'CSV importer, CRM, leads, AI, VedSync, data import, Gemini AI, Mohit Patil',
 };
 
 export default function RootLayout({
